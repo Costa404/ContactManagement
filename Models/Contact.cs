@@ -18,10 +18,11 @@ public class Contact
     public string ContactNumber { get; set; } = string.Empty;
 
     // just a standard email check here
-    [Required(ErrorMessage = "Email is required.")]
-    [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
-    [StringLength(200)]
-    public string Email { get; set; } = string.Empty;
+   [Required(ErrorMessage = "Email is required.")]
+   [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
+   [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Please enter a valid email address.")]
+   [StringLength(200)]
+   public string Email { get; set; } = string.Empty;
 
     // we use soft delete so contacts are never really removed from the database
     public bool IsDeleted { get; set; }
