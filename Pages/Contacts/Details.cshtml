@@ -1,0 +1,29 @@
+﻿@page "{id:int}"
+@model ContactManagement.Pages.Contacts.DetailsModel
+@{
+    ViewData["Title"] = "Contact Details";
+}
+
+<h1>Contact Details</h1>
+
+<dl class="row">
+    <dt class="col-sm-2">ID</dt>
+    <dd class="col-sm-10">@Model.Contact.Id</dd>
+
+    <dt class="col-sm-2">Name</dt>
+    <dd class="col-sm-10">@Model.Contact.Name</dd>
+
+    <dt class="col-sm-2">Contact</dt>
+    <dd class="col-sm-10">@Model.Contact.ContactNumber</dd>
+
+    <dt class="col-sm-2">Email</dt>
+    <dd class="col-sm-10">@Model.Contact.Email</dd>
+</dl>
+
+<div class="mt-3">
+    <a asp-page="Edit" asp-route-id="@Model.Contact.Id" class="btn btn-secondary">Edit</a>
+    <form method="post" asp-page-handler="Delete" asp-route-id="@Model.Contact.Id" class="d-inline">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this contact?');">Delete</button>
+    </form>
+    <a asp-page="Index" class="btn btn-link">Back to List</a>
+</div>
